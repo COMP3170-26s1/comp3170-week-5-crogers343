@@ -25,8 +25,11 @@ public class Flower extends SceneObject {
 	private int vertexBuffer;
 	private int[] indices;
 	private int indexBuffer;
+	
+	private Vector3f petalColour = new Vector3f(1f, 1.0f, 0f); // Dark Green
 
 	public Flower(int nPetals) {
+		
 		shader = ShaderLibrary.instance.compileShader(VERTEX_SHADER, FRAGMENT_SHADER);		
 	
 		// make the stem of the flower
@@ -59,6 +62,11 @@ public class Flower extends SceneObject {
 		};
 		    
 		indexBuffer = GLBuffers.createIndexBuffer(indices);
+		
+
+		FlowerHead flowerHead = new FlowerHead(nPetals, petalColour);
+		flowerHead.setParent(this);
+		flowerHead.getMatrix().translate(0.0F,HEIGHT,0.0f);
 	}
 	
 	public void drawSelf(Matrix4f mvpMatrix) {

@@ -72,7 +72,13 @@ public class Week5 implements IWindowListener {
 		
 		// TODO: Use the view and projection matricies to construct the mvpMatrix. (TASK 2)
 		//			Then send it down the scene graph!
+		
+	//	sceneCam = scene.sceneCam();
+		//sceneCam.GetViewMatrix();
+		
+		projectionMatrix.mul(viewMatrix,mvpMatrix);
 		scene.draw(mvpMatrix);
+		
 			
 	}
 
